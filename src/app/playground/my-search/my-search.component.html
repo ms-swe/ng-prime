@@ -1,0 +1,81 @@
+<h1>Station Search</h1>
+
+<form [formGroup]="form" (ngSubmit)="submitForm()">
+  <div formGroupName="criteria" class="form-group-criteria">
+    <label class="form-label" for="waters">Waters</label>
+    <input class="form-input" type="text" pInputText formControlName="waters" />
+
+    <label class="form-label" for="km">km</label>
+    <p-inputNumber
+      inputStyleClass="form-input"
+      inputId="minmax"
+      mode="decimal"
+      [min]="0"
+      [max]="10000"
+      formControlName="km"
+    ></p-inputNumber>
+
+    <label class="form-label" for="lon">Longitude</label>
+    <p-inputNumber
+      inputStyleClass="form-input"
+      inputId="minmax"
+      mode="decimal"
+      formControlName="lon"
+    />
+
+    <label class="form-label" for="lat">Latitude</label>
+    <p-inputNumber
+      inputStyleClass="form-input"
+      inputId="minmax"
+      mode="decimal"
+      formControlName="lat"
+    />
+
+    <label class="form-label" for="radius">Radius</label>
+    <p-inputNumber
+      inputStyleClass="form-input"
+      inputId="minmax"
+      mode="decimal"
+      formControlName="radius"
+    />
+  </div>
+  <div formGroupName="include" class="form-group-include">
+    <label class="form-label" for="includeTimeseries"
+      >Include info about timeseries</label
+    >
+    <p-inputSwitch
+      inputStyleClass="form-input"
+      formControlName="includeTimeseries"
+    ></p-inputSwitch>
+
+    <label class="form-label" for="includeCurrentMeasurement"
+      >include current measurement</label
+    >
+    <p-inputSwitch
+      inputStyleClass="form-input"
+      formControlName="includeCurrentMeasurement"
+    ></p-inputSwitch>
+
+    <label class="form-label" for="includeCharacteristicValues"
+      >include characteristic values</label
+    >
+    <p-inputSwitch
+      inputStyleClass="form-input"
+      formControlName="includeCharacteristicValues"
+    ></p-inputSwitch>
+  </div>
+
+  <ngp-form-errors
+    [controlNames]="['criteria', 'include']"
+    [messages]="{
+      mysearchcriteria_km_missing_waters:
+        'If km is given , a water is required!',
+      searchcriteria_lonlat_missing_lonlatradius:
+        'If longitude or latitude is given, both longitude and latitude as well as a radius is required!',
+      searchinclude_missing_timeseries:
+        'The current measurement and/or the characteristic values can only be provided, if the info about timeseries is included!'
+    }"
+  ></ngp-form-errors>
+
+  <p-button label="Suchen" type="submit" [disabled]="form.invalid"> </p-button>
+</form>

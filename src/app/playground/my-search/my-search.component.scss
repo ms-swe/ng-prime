@@ -1,0 +1,24 @@
+.form-group {
+  border: 1px solid grey;
+  border-radius: 10px;
+  display: grid;
+  column-gap: 10px;
+  row-gap: 10px;
+  padding: 10px;
+  margin: 20px 0px;
+  justify-items: start;
+}
+
+.form-group-criteria {
+  @extend .form-group;
+  grid-template-columns: 100px 150px 100px 150px;
+}
+
+.form-group-include {
+  @extend .form-group;
+  grid-template-columns: 250px 100px;
+}
+
+.form-input {
+  width: 100%;
+}
