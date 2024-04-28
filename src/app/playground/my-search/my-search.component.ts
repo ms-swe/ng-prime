@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, inject } from '@angular/core';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { searchCriteriaValidator } from '../validators/searchCriteriaValidator';
 import { ButtonModule } from 'primeng/button';
@@ -6,6 +6,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { searchIncludeValidator } from '../validators/searchIncludeValidator';
 import { FormErrorsComponent } from '../../shared/form-errors/form-errors.component';
+import { PlaygroundStore } from '../data/playground-store';
 
 @Component({
   selector: 'ngp-my-search',
@@ -22,6 +23,8 @@ import { FormErrorsComponent } from '../../shared/form-errors/form-errors.compon
   encapsulation: ViewEncapsulation.None,
 })
 export class MySearchComponent {
+  playgroundStore = inject(PlaygroundStore);
+
   form = new FormGroup({
     criteria: new FormGroup(
       {
@@ -50,14 +53,15 @@ export class MySearchComponent {
   submitForm() {
     const formValue = this.form.getRawValue();
 
-    if (formValue.criteria.waters) {
-      // this.facade.loadPublicStopsByName(formValue.criteria.name);
-    } else {
-      // this.facade.loadPublicStopsByLocation(
-      //   formValue.criteria.lon,
-      //   formValue.criteria.lat,
-      //   formValue.criteria.radius
-      // );
-    }
+    this.playgroundStore.load(
+      formValue.criteria.waters,
+      formValue.criteria.km,
+      formValue.criteria.lon,
+      formValue.criteria.lat,
+      formValue.criteria.radius,
+      formValue.include.includeTimeseries,
+      formValue.include.includeCurrentMeasurement,
+      formValue.include.includeCharacteristicValues,
+    );
   }
 }
