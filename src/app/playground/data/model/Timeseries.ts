@@ -10,44 +10,30 @@
  * Do not edit the class manually.
  */
 
-import { StationWater } from '../model/StationWater';
-import { Timeseries } from '../model/Timeseries';
+import { CurrentMeasurement } from '../model/CurrentMeasurement';
+import { TimeseriesGaugeZero } from '../model/TimeseriesGaugeZero';
 
-export class Station {
+export class Timeseries {
   /**
-   * Eindeutige unveränderliche ID
-   */
-  'uuid'?: string;
-  /**
-   * Pegelnummer
-   */
-  'number'?: string;
-  /**
-   * Pegelname (max. 40 Zeichen)
+   * Kurzbezeichnung
    */
   'shortname'?: string;
   /**
-   * Pegelname (max. 255 Zeichen)
+   * Langbezeichnung
    */
   'longname'?: string;
   /**
-   * Flusskilometer
+   * Maßeinheit
    */
-  'km'?: number;
+  'unit'?: string;
   /**
-   * Wasserstraßen- und Schifffahrtsamt
+   * Abstand der Messwerte in Minuten.
    */
-  'agency'?: string;
-  /**
-   * Längengrad in WGS84 Dezimalnotation
-   */
-  'longitude'?: number;
-  /**
-   * Breitengrad in WGS84 Dezimalnotation
-   */
-  'latitude'?: number;
-  'water'?: StationWater;
-  'timeseries'?: Array<Timeseries>;
+  'equidistance'?: number;
+  'currentMeasurement'?: CurrentMeasurement;
+  'gaugeZero'?: TimeseriesGaugeZero;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  'characteristicValues'?: Array<any>;
 
   static readonly discriminator: string | undefined = undefined;
 
@@ -57,18 +43,6 @@ export class Station {
     type: string;
     format: string;
   }> = [
-    {
-      name: 'uuid',
-      baseName: 'uuid',
-      type: 'string',
-      format: '',
-    },
-    {
-      name: 'number',
-      baseName: 'number',
-      type: 'string',
-      format: '',
-    },
     {
       name: 'shortname',
       baseName: 'shortname',
@@ -82,45 +56,39 @@ export class Station {
       format: '',
     },
     {
-      name: 'km',
-      baseName: 'km',
-      type: 'number',
-      format: 'float',
-    },
-    {
-      name: 'agency',
-      baseName: 'agency',
+      name: 'unit',
+      baseName: 'unit',
       type: 'string',
       format: '',
     },
     {
-      name: 'longitude',
-      baseName: 'longitude',
+      name: 'equidistance',
+      baseName: 'equidistance',
       type: 'number',
       format: 'float',
     },
     {
-      name: 'latitude',
-      baseName: 'latitude',
-      type: 'number',
-      format: 'float',
-    },
-    {
-      name: 'water',
-      baseName: 'water',
-      type: 'StationWater',
+      name: 'currentMeasurement',
+      baseName: 'currentMeasurement',
+      type: 'CurrentMeasurement',
       format: '',
     },
     {
-      name: 'timeseries',
-      baseName: 'timeseries',
-      type: 'Array<Timeseries>',
+      name: 'gaugeZero',
+      baseName: 'gaugeZero',
+      type: 'TimeseriesGaugeZero',
+      format: '',
+    },
+    {
+      name: 'characteristicValues',
+      baseName: 'characteristicValues',
+      type: 'Array<any>',
       format: '',
     },
   ];
 
   static getAttributeTypeMap() {
-    return Station.attributeTypeMap;
+    return Timeseries.attributeTypeMap;
   }
 
   public constructor() {}

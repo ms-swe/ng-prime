@@ -10,44 +10,12 @@
  * Do not edit the class manually.
  */
 
-import { StationWater } from '../model/StationWater';
-import { Timeseries } from '../model/Timeseries';
-
-export class Station {
-  /**
-   * Eindeutige unveränderliche ID
-   */
-  'uuid'?: string;
-  /**
-   * Pegelnummer
-   */
-  'number'?: string;
-  /**
-   * Pegelname (max. 40 Zeichen)
-   */
+/**
+ * Angaben zum Gewässer
+ */
+export class StationWater {
   'shortname'?: string;
-  /**
-   * Pegelname (max. 255 Zeichen)
-   */
   'longname'?: string;
-  /**
-   * Flusskilometer
-   */
-  'km'?: number;
-  /**
-   * Wasserstraßen- und Schifffahrtsamt
-   */
-  'agency'?: string;
-  /**
-   * Längengrad in WGS84 Dezimalnotation
-   */
-  'longitude'?: number;
-  /**
-   * Breitengrad in WGS84 Dezimalnotation
-   */
-  'latitude'?: number;
-  'water'?: StationWater;
-  'timeseries'?: Array<Timeseries>;
 
   static readonly discriminator: string | undefined = undefined;
 
@@ -57,18 +25,6 @@ export class Station {
     type: string;
     format: string;
   }> = [
-    {
-      name: 'uuid',
-      baseName: 'uuid',
-      type: 'string',
-      format: '',
-    },
-    {
-      name: 'number',
-      baseName: 'number',
-      type: 'string',
-      format: '',
-    },
     {
       name: 'shortname',
       baseName: 'shortname',
@@ -81,46 +37,10 @@ export class Station {
       type: 'string',
       format: '',
     },
-    {
-      name: 'km',
-      baseName: 'km',
-      type: 'number',
-      format: 'float',
-    },
-    {
-      name: 'agency',
-      baseName: 'agency',
-      type: 'string',
-      format: '',
-    },
-    {
-      name: 'longitude',
-      baseName: 'longitude',
-      type: 'number',
-      format: 'float',
-    },
-    {
-      name: 'latitude',
-      baseName: 'latitude',
-      type: 'number',
-      format: 'float',
-    },
-    {
-      name: 'water',
-      baseName: 'water',
-      type: 'StationWater',
-      format: '',
-    },
-    {
-      name: 'timeseries',
-      baseName: 'timeseries',
-      type: 'Array<Timeseries>',
-      format: '',
-    },
   ];
 
   static getAttributeTypeMap() {
-    return Station.attributeTypeMap;
+    return StationWater.attributeTypeMap;
   }
 
   public constructor() {}

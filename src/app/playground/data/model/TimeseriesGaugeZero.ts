@@ -10,44 +10,19 @@
  * Do not edit the class manually.
  */
 
-import { StationWater } from '../model/StationWater';
-import { Timeseries } from '../model/Timeseries';
-
-export class Station {
+export class TimeseriesGaugeZero {
   /**
-   * Eindeutige unveränderliche ID
+   * Einheit des Pegelnullpunkts (immer in Metern über einem Normalhöhennull ([Dokumentation](https://www.pegelonline.wsv.de/gast/hilfe#hilfe_hoehensystem))
    */
-  'uuid'?: string;
+  'unit'?: string;
   /**
-   * Pegelnummer
+   * Höhe als Dezimalwert
    */
-  'number'?: string;
+  'value'?: number;
   /**
-   * Pegelname (max. 40 Zeichen)
+   * Beginn der Gültigkeit. [ISO_8601](https://de.wikipedia.org/wiki/ISO_8601) Datum.
    */
-  'shortname'?: string;
-  /**
-   * Pegelname (max. 255 Zeichen)
-   */
-  'longname'?: string;
-  /**
-   * Flusskilometer
-   */
-  'km'?: number;
-  /**
-   * Wasserstraßen- und Schifffahrtsamt
-   */
-  'agency'?: string;
-  /**
-   * Längengrad in WGS84 Dezimalnotation
-   */
-  'longitude'?: number;
-  /**
-   * Breitengrad in WGS84 Dezimalnotation
-   */
-  'latitude'?: number;
-  'water'?: StationWater;
-  'timeseries'?: Array<Timeseries>;
+  'validFrom'?: string;
 
   static readonly discriminator: string | undefined = undefined;
 
@@ -58,69 +33,27 @@ export class Station {
     format: string;
   }> = [
     {
-      name: 'uuid',
-      baseName: 'uuid',
+      name: 'unit',
+      baseName: 'unit',
       type: 'string',
       format: '',
     },
     {
-      name: 'number',
-      baseName: 'number',
-      type: 'string',
-      format: '',
-    },
-    {
-      name: 'shortname',
-      baseName: 'shortname',
-      type: 'string',
-      format: '',
-    },
-    {
-      name: 'longname',
-      baseName: 'longname',
-      type: 'string',
-      format: '',
-    },
-    {
-      name: 'km',
-      baseName: 'km',
+      name: 'value',
+      baseName: 'value',
       type: 'number',
       format: 'float',
     },
     {
-      name: 'agency',
-      baseName: 'agency',
+      name: 'validFrom',
+      baseName: 'validFrom',
       type: 'string',
-      format: '',
-    },
-    {
-      name: 'longitude',
-      baseName: 'longitude',
-      type: 'number',
-      format: 'float',
-    },
-    {
-      name: 'latitude',
-      baseName: 'latitude',
-      type: 'number',
-      format: 'float',
-    },
-    {
-      name: 'water',
-      baseName: 'water',
-      type: 'StationWater',
-      format: '',
-    },
-    {
-      name: 'timeseries',
-      baseName: 'timeseries',
-      type: 'Array<Timeseries>',
-      format: '',
+      format: 'date',
     },
   ];
 
   static getAttributeTypeMap() {
-    return Station.attributeTypeMap;
+    return TimeseriesGaugeZero.attributeTypeMap;
   }
 
   public constructor() {}

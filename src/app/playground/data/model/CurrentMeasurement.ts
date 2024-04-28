@@ -10,44 +10,14 @@
  * Do not edit the class manually.
  */
 
-import { StationWater } from '../model/StationWater';
-import { Timeseries } from '../model/Timeseries';
-
-export class Station {
-  /**
-   * Eindeutige unveränderliche ID
-   */
-  'uuid'?: string;
-  /**
-   * Pegelnummer
-   */
-  'number'?: string;
-  /**
-   * Pegelname (max. 40 Zeichen)
-   */
-  'shortname'?: string;
-  /**
-   * Pegelname (max. 255 Zeichen)
-   */
-  'longname'?: string;
-  /**
-   * Flusskilometer
-   */
-  'km'?: number;
-  /**
-   * Wasserstraßen- und Schifffahrtsamt
-   */
-  'agency'?: string;
-  /**
-   * Längengrad in WGS84 Dezimalnotation
-   */
-  'longitude'?: number;
-  /**
-   * Breitengrad in WGS84 Dezimalnotation
-   */
-  'latitude'?: number;
-  'water'?: StationWater;
-  'timeseries'?: Array<Timeseries>;
+export class CurrentMeasurement {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  'timestamp'?: any | null;
+  'value'?: number;
+  'trend'?: number;
+  'stateMnwMhw'?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  'stateNswHsw'?: any | null;
 
   static readonly discriminator: string | undefined = undefined;
 
@@ -58,69 +28,39 @@ export class Station {
     format: string;
   }> = [
     {
-      name: 'uuid',
-      baseName: 'uuid',
-      type: 'string',
+      name: 'timestamp',
+      baseName: 'timestamp',
+      type: 'any',
       format: '',
     },
     {
-      name: 'number',
-      baseName: 'number',
-      type: 'string',
-      format: '',
-    },
-    {
-      name: 'shortname',
-      baseName: 'shortname',
-      type: 'string',
-      format: '',
-    },
-    {
-      name: 'longname',
-      baseName: 'longname',
-      type: 'string',
-      format: '',
-    },
-    {
-      name: 'km',
-      baseName: 'km',
+      name: 'value',
+      baseName: 'value',
       type: 'number',
-      format: 'float',
+      format: '',
     },
     {
-      name: 'agency',
-      baseName: 'agency',
+      name: 'trend',
+      baseName: 'trend',
+      type: 'number',
+      format: '',
+    },
+    {
+      name: 'stateMnwMhw',
+      baseName: 'stateMnwMhw',
       type: 'string',
       format: '',
     },
     {
-      name: 'longitude',
-      baseName: 'longitude',
-      type: 'number',
-      format: 'float',
-    },
-    {
-      name: 'latitude',
-      baseName: 'latitude',
-      type: 'number',
-      format: 'float',
-    },
-    {
-      name: 'water',
-      baseName: 'water',
-      type: 'StationWater',
-      format: '',
-    },
-    {
-      name: 'timeseries',
-      baseName: 'timeseries',
-      type: 'Array<Timeseries>',
+      name: 'stateNswHsw',
+      baseName: 'stateNswHsw',
+      type: 'any',
       format: '',
     },
   ];
 
   static getAttributeTypeMap() {
-    return Station.attributeTypeMap;
+    return CurrentMeasurement.attributeTypeMap;
   }
 
   public constructor() {}

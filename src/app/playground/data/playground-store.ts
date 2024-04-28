@@ -46,6 +46,7 @@ export const PlaygroundStore = signalStore(
         );
 
         console.log('RESP', typeof response);
+        console.log('RESP', response.at(0)?.longname);
 
         //TODO 1. state patchen
         //TODO 2. anzeigen in component als Tabelle
