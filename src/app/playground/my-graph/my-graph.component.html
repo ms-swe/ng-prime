@@ -1,0 +1,7 @@
+<p-inputSwitch [(ngModel)]="showGraph"></p-inputSwitch>
+
+@if (showGraph()) {
+  <p>
+    <img [ngSrc]="url()!" alt="no graph" width="400" height="200" />
+  </p>
+}

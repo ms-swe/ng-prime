@@ -16,13 +16,19 @@
       <th>Name</th>
       <th>Water</th>
       <th>km</th>
+      <th>Graph</th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-station>
     <tr>
-      <td>{{ station.longname }}</td>
+      <td>
+        {{ station.longname }}
+      </td>
       <td>{{ station.water?.longname ?? "unknown" }}</td>
       <td>{{ station.km }}</td>
+      <td>
+        <ngp-my-graph [stationUuid]="station.uuid"></ngp-my-graph>
+      </td>
     </tr>
   </ng-template>
 </p-table>
