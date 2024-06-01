@@ -1,0 +1,51 @@
+<div class="grid">
+  <p-knob class="col-2" [(ngModel)]="value1" />
+
+  <p-button class="col-2 h-8rem flex" (click)="increaseValue1()"
+    >Increase first value</p-button
+  >
+
+  <div class="col-8"></div>
+
+  <div class="col-2"></div>
+
+  <p-button class="col-2 h-8rem flex" (click)="increaseBothValues()"
+    >Increase both values</p-button
+  >
+
+  <div class="col-8"></div>
+
+  <p-knob class="col-2" [(ngModel)]="value2" />
+
+  <p-button class="col-2 h-8rem flex" (click)="setSecondValueTo100()"
+    >Set second value to 100</p-button
+  >
+
+  <div class="col-8"></div>
+
+  <p class="col-2">The sum is {{ sum() }}</p>
+
+  <textarea
+    class="col-3"
+    rows="5"
+    cols="30"
+    pInputTextarea
+    [(ngModel)]="text"
+  ></textarea>
+
+  <div class="col-7"></div>
+
+  <p-button (click)="setRatingTo5()" class="col-2">Set rating to 5</p-button>
+
+  <p class="col-2">The rating is {{ rating() }}</p>
+
+  <div class="col-8"></div>
+</div>
+
+<ngp-inner
+  title="{{ 'The sum is ' + sum() }}"
+  [(rating)]="rating"
+  class="m-8"
+></ngp-inner>
+
+<p>The rating given in the inner component is {{ rating() }} !</p>

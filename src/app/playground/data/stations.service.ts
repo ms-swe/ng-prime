@@ -23,15 +23,13 @@ export class StationsService {
   ): Promise<Station[]> {
     let url = this.#baseUrl;
 
-    url += 'includeTimeseries=' + includeTimeseries ? 'true' : 'false';
+    url += 'includeTimeseries=' + (includeTimeseries ? 'true' : 'false');
     url +=
-      '&includeCurrentMeasurement=' + includeCurrentMeasurement
-        ? 'true'
-        : 'false';
+      '&includeCurrentMeasurement=' +
+      (includeCurrentMeasurement ? 'true' : 'false');
     url +=
-      '&includeCharacteristicValues=' + includeCharacteristicValues
-        ? 'true'
-        : 'false';
+      '&includeCharacteristicValues=' +
+      (includeCharacteristicValues ? 'true' : 'false');
 
     url += waters ? '&waters=' + waters : '';
     url += km ? '&km=' + km : '';

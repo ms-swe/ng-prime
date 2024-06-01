@@ -64,4 +64,12 @@ export class MySearchComponent {
       formValue.include.includeCharacteristicValues,
     );
   }
+
+  saveToLocalStorage() {
+    this.playgroundStore.saveToLocalStorage();
+  }
+
+  loadFromLocalStorage() {
+    this.playgroundStore.loadFromLocalStorage();
+  }
 }

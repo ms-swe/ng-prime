@@ -1,0 +1,33 @@
+<p>Loading: {{ playgroundStore.isLoading() }}</p>
+<p>{{ playgroundStore.stations().length }} Stations</p>
+<b>Last Search Criteria:</b>
+<p>Waters: {{ playgroundStore.lastSearchCriteria.waters() }}</p>
+<p>km: {{ localLastSearchCriteria.km() }}</p>
+
+<p-table
+  [value]="playgroundStore.stations()"
+  [tableStyle]="{ 'min-width': '50rem' }"
+  [loading]="playgroundStore.isLoading()"
+  [paginator]="true"
+  [rows]="5"
+>
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Name</th>
+      <th>Water</th>
+      <th>km</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-station>
+    <tr>
+      <td>{{ station.longname }}</td>
+      <td>{{ station.water?.longname ?? "unknown" }}</td>
+      <td>{{ station.km }}</td>
+    </tr>
+  </ng-template>
+</p-table>
+
+<!--<p-divider />-->
+<!--@for (station of playgroundStore.stations(); track station.uuid) {-->
+<!--  <ngp-station [station]="station"></ngp-station>-->
+<!--}-->

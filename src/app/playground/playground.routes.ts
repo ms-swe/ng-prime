@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
-import { MySearchComponent } from './my-search/my-search.component';
+import { MyStationsComponent } from './my-stations/my-stations.component';
 
 export const PLAYGROUND_ROUTES: Routes = [
-  { path: '', redirectTo: 'my-search', pathMatch: 'full' },
+  { path: '', redirectTo: 'my-stations', pathMatch: 'full' },
   {
-    path: 'my-search',
-    component: MySearchComponent,
+    path: 'my-stations',
+    component: MyStationsComponent,
   },
 ];

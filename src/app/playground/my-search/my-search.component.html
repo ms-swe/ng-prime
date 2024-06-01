@@ -1,68 +1,79 @@
 <h1>Station Search</h1>
 
 <form [formGroup]="form" (ngSubmit)="submitForm()">
-  <div formGroupName="criteria" class="form-group-criteria">
-    <label class="form-label" for="waters">Waters</label>
-    <input class="form-input" type="text" pInputText formControlName="waters" />
+  <div class="flex">
+    <div formGroupName="criteria" class="form-group-criteria mr-2">
+      <label class="form-label" for="waters">Waters</label>
+      <input
+        id="waters"
+        class="form-input"
+        type="text"
+        formControlName="waters"
+      />
 
-    <label class="form-label" for="km">km</label>
-    <p-inputNumber
-      inputStyleClass="form-input"
-      inputId="minmax"
-      mode="decimal"
-      [min]="0"
-      [max]="10000"
-      formControlName="km"
-    ></p-inputNumber>
+      <label class="form-label" for="km">km</label>
+      <p-inputNumber
+        id="km"
+        inputStyleClass="form-input"
+        inputId="minmax"
+        mode="decimal"
+        [min]="0"
+        [max]="10000"
+        formControlName="km"
+      ></p-inputNumber>
 
-    <label class="form-label" for="lon">Longitude</label>
-    <p-inputNumber
-      inputStyleClass="form-input"
-      inputId="minmax"
-      mode="decimal"
-      formControlName="lon"
-    />
+      <label class="form-label" for="lon">Longitude</label>
+      <p-inputNumber
+        id="lon"
+        inputStyleClass="form-input"
+        inputId="minmax"
+        mode="decimal"
+        formControlName="lon"
+      />
 
-    <label class="form-label" for="lat">Latitude</label>
-    <p-inputNumber
-      inputStyleClass="form-input"
-      inputId="minmax"
-      mode="decimal"
-      formControlName="lat"
-    />
+      <label class="form-label" for="lat">Latitude</label>
+      <p-inputNumber
+        id="lat"
+        inputStyleClass="form-input"
+        inputId="minmax"
+        mode="decimal"
+        formControlName="lat"
+      />
 
-    <label class="form-label" for="radius">Radius</label>
-    <p-inputNumber
-      inputStyleClass="form-input"
-      inputId="minmax"
-      mode="decimal"
-      formControlName="radius"
-    />
-  </div>
-  <div formGroupName="include" class="form-group-include">
-    <label class="form-label" for="includeTimeseries"
-      >Include info about timeseries</label
-    >
-    <p-inputSwitch
-      inputStyleClass="form-input"
-      formControlName="includeTimeseries"
-    ></p-inputSwitch>
+      <label class="form-label" for="radius">Radius</label>
+      <p-inputNumber
+        id="radius"
+        inputStyleClass="form-input"
+        inputId="minmax"
+        mode="decimal"
+        formControlName="radius"
+      />
+    </div>
+    <div formGroupName="include" class="form-group-include">
+      <label class="form-label" for="includeTimeseries"
+        >Include info about timeseries</label
+      >
+      <p-inputSwitch
+        id="includeTimeseries"
+        formControlName="includeTimeseries"
+      ></p-inputSwitch>
 
-    <label class="form-label" for="includeCurrentMeasurement"
-      >include current measurement</label
-    >
-    <p-inputSwitch
-      inputStyleClass="form-input"
-      formControlName="includeCurrentMeasurement"
-    ></p-inputSwitch>
+      <label class="form-label" for="includeCurrentMeasurement"
+        >include current measurement</label
+      >
+      <p-inputSwitch
+        id="includeCurrentMeasurement"
+        formControlName="includeCurrentMeasurement"
+      ></p-inputSwitch>
 
-    <label class="form-label" for="includeCharacteristicValues"
-      >include characteristic values</label
-    >
-    <p-inputSwitch
-      inputStyleClass="form-input"
-      formControlName="includeCharacteristicValues"
-    ></p-inputSwitch>
+      <label class="form-label" for="includeCharacteristicValues"
+        >include characteristic values</label
+      >
+      <p-inputSwitch
+        id="includeCharacteristicValues"
+        formControlName="includeCharacteristicValues"
+      ></p-inputSwitch>
+    </div>
   </div>
 
   <ngp-form-errors
@@ -77,5 +88,21 @@
     }"
   ></ngp-form-errors>
 
-  <p-button label="Suchen" type="submit" [disabled]="form.invalid"> </p-button>
+  <p-button
+    label="Search"
+    type="submit"
+    [disabled]="form.invalid"
+    class="mr-2"
+  />
+  <p-button
+    label="Load from Local Storage"
+    severity="secondary"
+    (onClick)="loadFromLocalStorage()"
+    class="mr-2"
+  />
+  <p-button
+    label="Save to Local Storage"
+    severity="secondary"
+    (onClick)="saveToLocalStorage()"
+  />
 </form>
