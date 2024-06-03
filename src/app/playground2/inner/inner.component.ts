@@ -1,4 +1,4 @@
-import { Component, input, model, ModelSignal } from '@angular/core';
+import { Component, input, model } from '@angular/core';
 import { CardModule } from 'primeng/card';
 import { RatingModule } from 'primeng/rating';
 import { FormsModule } from '@angular/forms';
