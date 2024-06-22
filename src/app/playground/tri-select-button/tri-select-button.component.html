@@ -1,0 +1,14 @@
+<p-selectButton
+  [options]="options"
+  [(ngModel)]="value"
+  (onChange)="onChange($event.value)"
+>
+  <ng-template let-item pTemplate>
+    <i
+      pTooltip="{{ item.label }}"
+      tooltipPosition="bottom"
+      [class]="item.icon"
+    ></i>
+  </ng-template>
+  >
+</p-selectButton>

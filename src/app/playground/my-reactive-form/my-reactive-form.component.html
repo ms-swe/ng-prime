@@ -1,0 +1,14 @@
+<form [formGroup]="formGroup" (ngSubmit)="submitForm()">
+  <div class="flex">
+    <label class="form-label" for="aVal1">My Tri Select Button</label>
+    <ngp-tri-select-button id="aVal1" formControlName="aVal1">
+    </ngp-tri-select-button>
+
+    <p-button
+      label="Submit"
+      type="submit"
+      [disabled]="formGroup.invalid"
+      class="mt-8"
+    />
+  </div>
+</form>
