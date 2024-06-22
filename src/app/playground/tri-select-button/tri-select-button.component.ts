@@ -5,7 +5,6 @@ import {
   NG_VALUE_ACCESSOR,
   FormsModule,
 } from '@angular/forms';
-import { SelectItem } from 'primeng/api';
 import { TooltipModule } from 'primeng/tooltip';
 
 /* eslint-disable  @typescript-eslint/no-explicit-any */
@@ -25,10 +24,10 @@ import { TooltipModule } from 'primeng/tooltip';
   styleUrl: './tri-select-button.component.scss',
 })
 export class TriSelectButtonComponent implements ControlValueAccessor {
-  options: SelectItem<boolean | null>[] = [
-    { label: 'no', value: false, icon: 'pi pi-ban' }, //TODO_MS add  | translate
-    { label: 'both', value: null, icon: 'pi pi-minus' },
-    { label: 'yes', value: true, icon: 'pi pi-check' },
+  options = [
+    { tooltip: 'no', value: false, icon: 'pi pi-ban' }, //TODO_MS add  | translate
+    { tooltip: 'both', value: null, icon: 'pi pi-minus' },
+    { tooltip: 'yes', value: true, icon: 'pi pi-check' },
   ];
 
   value: boolean | null = null;
