@@ -2,6 +2,7 @@
   [options]="options"
   [(ngModel)]="value"
   (onChange)="onChange($event.value)"
+  [disabled]="disabled"
 >
   <ng-template let-item pTemplate>
     <i

@@ -26,12 +26,14 @@ import { TooltipModule } from 'primeng/tooltip';
 })
 export class TriSelectButtonComponent implements ControlValueAccessor {
   options: SelectItem<boolean | null>[] = [
-    { label: 'yes', value: true, icon: 'pi pi-check' }, //TODO_MS add  | translate
+    { label: 'no', value: false, icon: 'pi pi-ban' }, //TODO_MS add  | translate
     { label: 'both', value: null, icon: 'pi pi-minus' },
-    { label: 'no', value: false, icon: 'pi pi-ban' },
+    { label: 'yes', value: true, icon: 'pi pi-check' },
   ];
 
   value: boolean | null = null;
+
+  disabled = false;
 
   onChange: any = () => {};
   onTouched: any = () => {};
@@ -46,5 +48,9 @@ export class TriSelectButtonComponent implements ControlValueAccessor {
 
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
+  }
+
+  setDisabledState(isDisabled: boolean) {
+    this.disabled = isDisabled;
   }
 }
