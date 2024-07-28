@@ -8,15 +8,27 @@
   [value]="playgroundStore.stations()"
   [tableStyle]="{ 'min-width': '50rem' }"
   [loading]="playgroundStore.isLoading()"
-  [paginator]="true"
-  [rows]="5"
 >
   <ng-template pTemplate="header">
     <tr>
-      <th>Name</th>
-      <th>Water</th>
-      <th>km</th>
+      <th pSortableColumn="name">Name</th>
+      <th pSortableColumn="water">Water</th>
+      <th pSortableColumn="km">km</th>
       <th>Graph</th>
+    </tr>
+    <tr>
+      <th>
+        <p-columnFilter type="text" field="station.longname" />
+      </th>
+      <th>
+        <p-columnFilter field="water" />
+      </th>
+      <th>
+        <p-columnFilter field="km" />
+      </th>
+      <th>
+        <p-columnFilter field="graph" />
+      </th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-station>

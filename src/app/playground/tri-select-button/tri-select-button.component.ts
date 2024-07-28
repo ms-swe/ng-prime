@@ -26,7 +26,7 @@ import { TooltipModule } from 'primeng/tooltip';
 export class TriSelectButtonComponent implements ControlValueAccessor {
   options = [
     { tooltip: 'no', value: false, icon: 'pi pi-ban' }, //TODO_MS add  | translate
-    { tooltip: 'both', value: null, icon: 'pi pi-minus' },
+    { tooltip: 'both', value: null, icon: 'pi pi-question' },
     { tooltip: 'yes', value: true, icon: 'pi pi-check' },
   ];
 

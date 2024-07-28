@@ -1,0 +1,16 @@
+.gitignore
+.openapi-generator-ignore
+README.md
+api.module.ts
+api/api.ts
+api/course-rest-controller.service.ts
+api/favorite-stop-rest-controller.service.ts
+configuration.ts
+encoder.ts
+git_push.sh
+index.ts
+model/course.ts
+model/favorite-stop.ts
+model/models.ts
+param.ts
+variables.ts

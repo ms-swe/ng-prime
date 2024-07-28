@@ -1,0 +1,25 @@
+:host ::ng-deep p-tristatecheckbox checkicon {
+    display: inline-block;
+    background-image: url('/assets/check.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+  width: 16px;
+  height: 16px;
+
+  .p-icon {
+    display: none;
+  }
+}
+
+:host ::ng-deep p-tristatecheckbox timesicon {
+  display: inline-block;
+  background-image: url('/assets/ban.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 16px;
+  height: 16px;
+
+  .p-icon {
+    display: none;
+  }
+}

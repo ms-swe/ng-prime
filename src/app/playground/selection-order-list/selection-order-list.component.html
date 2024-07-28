@@ -1,0 +1,10 @@
+<p-listbox
+  [options]="availableItems()"
+  [(ngModel)]="chosenAvailableItems"
+  optionLabel="name"
+  [multiple]="true"
+  [metaKeySelection]="true"
+  [filter]="true"
+  [style]="{ width: '15rem' }"
+  [listStyle]="{ 'max-height': '220px' }"
+/>

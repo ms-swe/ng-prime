@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "build-openapi": "openapi-generator-cli generate -o ./openapi-cat3 -i C:\\_downloads\\api-docs.yaml -g typescript-angular --additional-properties=fileNaming=kebab-case"
   },
   "private": true,
   "dependencies": {
@@ -23,7 +24,7 @@
     "chart.js": "^4.4.3",
     "primeflex": "^3.3.1",
     "primeicons": "^7.0.0",
-    "primeng": "^17.11.0",
+    "primeng": "^17.18.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.2"
@@ -37,6 +38,7 @@
     "@angular-eslint/template-parser": "17.3.0",
     "@angular/cli": "^17.0.10",
     "@angular/compiler-cli": "^17.0.0",
+    "@openapitools/openapi-generator-cli": "^2.13.4",
     "@types/jasmine": "~5.1.0",
     "@typescript-eslint/eslint-plugin": "7.2.0",
     "@typescript-eslint/parser": "7.2.0",
